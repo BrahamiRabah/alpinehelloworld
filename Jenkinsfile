@@ -5,8 +5,6 @@ pipeline {
        STAGING = "rabah-staging"
        PRODUCTION = "rabah-prod"
      }
-     parameters {
-     }
      agent none
      stages {
          stage('build image') {
@@ -65,13 +63,14 @@ pipeline {
                    heroku container:push -a ${PRODUCTION} web
                    heroku container:release -a ${PRODUCTION} web
                 '''
-                   
+              }
+            }       
          }
          stage('push images staging') {
             when {
                expression { GIT_BRANCHE == 'origin/master' }
             }
-            agent none
+            agent any
             environement {
                HEROKU_API_KEY = credentials('heroku_api_key')
             }
@@ -83,7 +82,8 @@ pipeline {
                    heroku container:push -a ${STAGING} web
                    heroku container:release -a ${STAGING} web
                 '''
-                   
+              }
+            }       
          }
      }
-     
+}
