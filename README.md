@@ -6,3 +6,4 @@ An Alpine-based Docker example
 - adding the Jenkinsfile
 - configure the webhook
 
+[![Build Status](http://ip10-0-0-3-c11va2omhe0g8vb111bg-8080.direct.docker.labs.eazytraining.fr/buildStatus/icon?job=deploiment)](http://ip10-0-0-3-c11va2omhe0g8vb111bg-8080.direct.docker.labs.eazytraining.fr/job/deploiment/)
