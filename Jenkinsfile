@@ -52,7 +52,7 @@ pipeline {
                expression { GIT_BRANCHE == 'origin/master' }
             }
             agent any
-            environement {
+            environment {
                HEROKU_API_KEY = credentials('heroku_api_key')
             }
             steps {
@@ -71,7 +71,7 @@ pipeline {
                expression { GIT_BRANCHE == 'origin/master' }
             }
             agent any
-            environement {
+            environment {
                HEROKU_API_KEY = credentials('heroku_api_key')
             }
             steps {
