@@ -47,10 +47,10 @@ pipeline {
               }
             }
          }
-         stage('push images') {
+         stage('push images to production project') {
             when {
-               expression { GIT_BRANCHE == 'origin/master' }
-            }
+                   expression { GIT_BRANCHE == 'origin/master' }
+                 }
             agent any
             environment {
                HEROKU_API_KEY = credentials('heroku_api_key')
@@ -66,10 +66,10 @@ pipeline {
               }
             }       
          }
-         stage('push images staging') {
+         stage('push images to the staging project') {
             when {
-               expression { GIT_BRANCHE == 'origin/master' }
-            }
+                   expression { GIT_BRANCHE == 'origin/master' }
+                 }
             agent any
             environment {
                HEROKU_API_KEY = credentials('heroku_api_key')
