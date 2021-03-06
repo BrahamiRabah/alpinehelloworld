@@ -14,7 +14,7 @@ pipeline {
                 sh 'docker build -t rabah94/${IMAGE_NAME}:${IMAGE_tag} .'
               }
             }
-         } 
+         }
          stage('run container') {
             agent any
             steps {
@@ -25,7 +25,7 @@ pipeline {
                 '''
               }
             }
-         } 
+         }
          stage('curl test') {
             agent any
             steps {
@@ -35,7 +35,7 @@ pipeline {
                 '''
               }
             }
-         } 
+         }
          stage('clean container') {
             agent any
             steps {
@@ -49,7 +49,7 @@ pipeline {
          }
          stage('push images to production project') {
             when {
-                   expression { GIT_BRANCHE == 'origin/master' }
+                   expression { GIT_BRANCH == 'origin/master' }
                  }
             agent any
             environment {
@@ -64,11 +64,11 @@ pipeline {
                    heroku container:release -a ${PRODUCTION} web
                 '''
               }
-            }       
+            }
          }
          stage('push images to the staging project') {
             when {
-                   expression { GIT_BRANCHE == 'origin/master' }
+                   expression { GIT_BRANCH == 'origin/master' }
                  }
             agent any
             environment {
@@ -83,7 +83,7 @@ pipeline {
                    heroku container:release -a ${STAGING} web
                 '''
               }
-            }       
+            }
          }
      }
 }
